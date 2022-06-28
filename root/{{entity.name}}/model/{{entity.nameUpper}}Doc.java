@@ -18,16 +18,8 @@ public class {{entity.nameUpper}}Doc {
     @Id
     {{#entityProperties}}
             {{level}} {{type}} {{name}};
-            {{/entityProperties}}
-//    private ObjectId id;
-//
-//    private String firstName;
-//    private String lastName;
-//    private String email;
-//    private String password;
-//
-//    private Company company = new Company();
-//    private Address address = new Address();
+    {{/entityProperties}}
+
 
 
 

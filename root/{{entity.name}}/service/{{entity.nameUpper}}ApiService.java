@@ -29,7 +29,9 @@ public class {{entity.nameUpper}}ApiService {
     public {{entity.nameUpper}}Doc create({{entity.nameUpper}}Request request) throws {{entity.nameUpper}}ExistException {
 
 
-        {{entity.nameUpper}}Doc {{entity.name}}Doc = {{entity.nameUpper}}Mapping.getInstance().getRequest().convert(request);
+        {{entity.nameUpper}}Doc {{entity.name}}Doc = {{entity.nameUpper}}Mapping.getInstance().getRequestMapping().convert(request);
+
+        {{entity.name}}Repository.save({{entity.name}}Doc);
 
         return {{entity.name}}Doc;
     }
@@ -69,7 +71,7 @@ public class {{entity.nameUpper}}ApiService {
             throw new {{entity.nameUpper}}NotExistException();
         }
 
-        {{entity.nameUpper}}Doc {{entity.name}}Doc = {{entity.nameUpper}}Mapping.getInstance().getRequest().convert(request)
+        {{entity.nameUpper}}Doc {{entity.name}}Doc = {{entity.nameUpper}}Mapping.getInstance().getRequestMapping().convert(request);
         {{entity.name}}Doc.setId(request.getId());
         {{entity.name}}Repository.save({{entity.name}}Doc);
 
