@@ -3,7 +3,6 @@ package {{path}}.{{entity.name}}.mapping;
 import com.bashilya.blog.base.api.response.SearchResponse;
 import com.bashilya.blog.base.mapping.BaseMapping;
 import {{path}}.{{entity.name}}.api.request.{{entity.nameUpper}}Request;
-import {{path}}.{{entity.name}}.api.response.{{entity.nameUpper}}FullResponse;
 import {{path}}.{{entity.name}}.api.response.{{entity.nameUpper}}Response;
 import {{path}}.{{entity.name}}.model.{{entity.nameUpper}}Doc;
 import lombok.Getter;
@@ -38,7 +37,7 @@ public class {{entity.nameUpper}}Mapping {
         public {{entity.nameUpper}}Response convert({{entity.nameUpper}}Doc {{entity.name}}Doc) {
             return {{entity.nameUpper}}Response.builder()
         {{#entityProperties}}
-        .{{name}}({{entity.name}}Request.get{{nameUpper}}())
+        .{{name}}({{entity.name}}Doc.get{{nameUpper}}())
         {{/entityProperties}}
                     .build();
         }
@@ -49,23 +48,7 @@ public class {{entity.nameUpper}}Mapping {
         }
     }
 
-    public static class ResponseFullMapping extends BaseMapping<{{entity.nameUpper}}Doc, {{entity.nameUpper}}FullResponse> {
-        @Override
-        public {{entity.nameUpper}}FullResponse convert({{entity.nameUpper}}Doc {{entity.name}}Doc) {
-            return {{entity.nameUpper}}FullResponse.builder()
-        {{#entityProperties}}
-        .{{name}}({{entity.name}}Request.get{{nameUpper}}())
-        {{/entityProperties}}
-                    .build();
-        }
 
-        @Override
-        public {{entity.nameUpper}}Doc unmapping({{entity.nameUpper}}FullResponse {{entity.name}}FullResponse) {
-            throw new RuntimeException("dont use this");
-        }
-
-
-    }
 
 
     public static class SearchMapping extends BaseMapping<SearchResponse<{{entity.nameUpper}}Doc>, SearchResponse<{{entity.nameUpper}}Response>> {
@@ -85,7 +68,6 @@ public class {{entity.nameUpper}}Mapping {
 
     private final RequestMapping requestMapping = new RequestMapping();
     private final ResponseMapping responseMapping = new ResponseMapping();
-    private final ResponseFullMapping responseFullMapping = new ResponseFullMapping();
     private final SearchMapping searchMapping = new SearchMapping();
 
     public static {{entity.nameUpper}}Mapping getInstance() {

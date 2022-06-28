@@ -2,8 +2,8 @@ package {{path}}.{{entity.name}}.service;
 
 import com.bashilya.blog.base.api.request.SearchRequest;
 import com.bashilya.blog.base.api.response.SearchResponse;
-import {{path}}.{{entity.name}}.api.request.RegistrationRequest;
 import {{path}}.{{entity.name}}.api.request.{{entity.nameUpper}}Request;
+import {{path}}.{{entity.name}}.mapping.{{entity.nameUpper}}Mapping;
 import {{path}}.{{entity.name}}.exception.{{entity.nameUpper}}ExistException;
 import {{path}}.{{entity.name}}.exception.{{entity.nameUpper}}NotExistException;
 import {{path}}.{{entity.name}}.model.{{entity.nameUpper}}Doc;
@@ -14,8 +14,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
